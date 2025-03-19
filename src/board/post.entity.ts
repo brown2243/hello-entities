@@ -31,11 +31,30 @@ export class Post {
   })
   status!: "active" | "deleted" | "hidden";
 
+  // 공지사항, 기본
+  @Column({
+    type: "enum",
+    enum: ["normal", "announcement"],
+    default: "normal",
+  })
+  type!: "normal" | "announcement";
+
   @Column()
   title!: string;
 
   @Column()
   content!: string;
+
+  @Column({ default: 0 })
+  likeCount!: number;
+
+  @Column({ default: 0 })
+  dislikeCount!: number;
+
+  @Column({ type: "int", default: 0 })
+  viewCount!: number; // 조회수 필드 추가
+
+  //
 
   @ManyToOne(() => Category, (category) => category.posts)
   category?: Category;

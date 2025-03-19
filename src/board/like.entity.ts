@@ -22,12 +22,14 @@ export abstract class Like {
   @UpdateDateColumn()
   updatedAt!: Date;
 
+  @Column({ type: "boolean" })
+  isLike!: boolean; // true: 좋아요, false: 싫어요
+
+  //
+
   @ManyToOne(() => User, (user) => user.likes, { onDelete: "CASCADE" })
   user!: User;
 
   @ManyToOne(() => Post, (post) => post.likes, { onDelete: "CASCADE" })
   post!: Post;
-
-  @Column({ type: "boolean" })
-  isLike!: boolean; // true: 좋아요, false: 싫어요
 }

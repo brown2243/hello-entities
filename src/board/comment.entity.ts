@@ -37,6 +37,8 @@ export abstract class Comment {
   @Column({ type: "tinyint", default: 0 })
   depth!: number;
 
+  //
+
   @ManyToOne(() => Post, (post) => post.comments)
   post?: Post;
 
