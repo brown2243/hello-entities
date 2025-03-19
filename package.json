@@ -1,0 +1,20 @@
+{
+  "name": "hello-db",
+  "version": "1.0.0",
+  "description": "entity만 생각해보는 프로젝트",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "brown",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "typescript": "^5.8.2"
+  },
+  "dependencies": {
+    "typeorm": "^0.3.21"
+  }
+}
