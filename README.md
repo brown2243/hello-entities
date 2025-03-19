@@ -1,3 +1,3 @@
 # Hello-db
 
-### [게시판](./src/entities/board/)
+### [게시판](./src/board/)

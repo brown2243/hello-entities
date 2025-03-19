@@ -1,5 +1,5 @@
-import { Post } from "entities/board/post.entity";
-import { User } from "entities/board/user.entity";
+import { Post } from "board/post.entity";
+import { User } from "board/user.entity";
 import {
   PrimaryGeneratedColumn,
   CreateDateColumn,

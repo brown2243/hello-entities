@@ -1,7 +1,7 @@
-import { Category } from "entities/board/category.entity";
-import { Comment } from "entities/board/comment.entity";
-import { Like } from "entities/board/like.entity";
-import { User } from "entities/board/user.entity";
+import { Category } from "board/category.entity";
+import { Comment } from "board/comment.entity";
+import { Like } from "board/like.entity";
+import { User } from "board/user.entity";
 import {
   Column,
   CreateDateColumn,

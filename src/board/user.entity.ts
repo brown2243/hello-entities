@@ -1,7 +1,7 @@
-import { Comment } from "entities/board/comment.entity";
-import { Like } from "entities/board/like.entity";
-import { Post } from "entities/board/post.entity";
-import { BaseUser } from "entities/common/user.entity";
+import { Comment } from "board/comment.entity";
+import { Like } from "board/like.entity";
+import { Post } from "board/post.entity";
+import { BaseUser } from "common/user.entity";
 import { Entity, OneToMany } from "typeorm";
 
 @Entity("users")
