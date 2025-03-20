@@ -1,5 +1,5 @@
 import { CommonEntity } from "common/common.entity";
-import { Column, CreateDateColumn, Entity } from "typeorm";
+import { Column, Entity } from "typeorm";
 
 @Entity("users")
 export class BaseUser extends CommonEntity {
@@ -12,8 +12,8 @@ export class BaseUser extends CommonEntity {
   @Column({ type: "varchar", length: 255, unique: true })
   email!: string;
 
-  @CreateDateColumn()
-  createdAt!: Date;
+  @Column({ type: "varchar", length: 255, unique: true })
+  phone!: string;
 
   @Column({ type: "boolean", default: true })
   isActive!: boolean;
