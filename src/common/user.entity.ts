@@ -1,16 +1,8 @@
-import {
-  Entity,
-  PrimaryGeneratedColumn,
-  Column,
-  CreateDateColumn,
-  UpdateDateColumn,
-} from "typeorm";
+import { CommonEntity } from "common/common.entity";
+import { Column, CreateDateColumn, Entity } from "typeorm";
 
 @Entity("users")
-export class BaseUser {
-  @PrimaryGeneratedColumn({ type: "bigint" })
-  id!: string;
-
+export class BaseUser extends CommonEntity {
   @Column({ type: "varchar", length: 50, unique: true })
   username!: string;
 
@@ -25,7 +17,4 @@ export class BaseUser {
 
   @Column({ type: "boolean", default: true })
   isActive!: boolean;
-
-  @UpdateDateColumn({ nullable: true })
-  updatedAt?: Date;
 }

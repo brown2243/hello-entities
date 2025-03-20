@@ -1,16 +1,16 @@
 import { Post } from "board/post.entity";
 import { User } from "board/user.entity";
 import {
-  PrimaryGeneratedColumn,
-  CreateDateColumn,
-  UpdateDateColumn,
   Column,
+  CreateDateColumn,
+  Entity,
   ManyToOne,
   OneToMany,
-  Entity,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from "typeorm";
 
-@Entity("Comments")
+@Entity("comments")
 export abstract class Comment {
   @PrimaryGeneratedColumn()
   id!: number;
