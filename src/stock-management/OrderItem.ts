@@ -1,5 +1,6 @@
 import { CommonEntity } from "common/common.entity";
 import { Distributor } from "stock-management/Distributor";
+import { Stock } from "stock-management/Stock";
 import { Column, Entity, ManyToOne } from "typeorm";
 
 @Entity("order_items")
@@ -36,4 +37,7 @@ export class OrderItem extends CommonEntity {
   // 유통사
   @ManyToOne(() => Distributor, (distributor) => distributor.orderItems)
   distributor?: Distributor;
+
+  @ManyToOne(() => Stock, (stock) => stock.orderItems)
+  stock?: Stock;
 }

@@ -1,10 +1,9 @@
 import { CommonEntity } from "common/common.entity";
 import { OrderItem } from "stock-management/OrderItem";
-import { User } from "stock-management/User";
-import { Column, Entity, ManyToOne, OneToMany } from "typeorm";
+import { Column, Entity, OneToMany } from "typeorm";
 
-@Entity("stocks")
-export class Stock extends CommonEntity {
+@Entity("example_stocks")
+export class ExampleStock extends CommonEntity {
   // 활성, 삭제, 숨김
   @Column({
     type: "enum",
@@ -17,17 +16,10 @@ export class Stock extends CommonEntity {
   name!: string;
 
   @Column()
-  amount!: number;
-
-  @Column()
   unit!: string;
 
   @Column({ nullable: true })
   description?: string;
-
-  //
-  @ManyToOne(() => User, (user) => user.stocks)
-  user?: User;
 
   @OneToMany(() => OrderItem, (orderItem) => orderItem.stock)
   orderItems?: OrderItem;
