@@ -1,7 +1,8 @@
 import { CommonEntity } from "common/common.entity";
+import { AbstractStock } from "stock-management/AbstractStock";
 import { Distributor } from "stock-management/Distributor";
-import { Stock } from "stock-management/Stock";
-import { Column, Entity, ManyToOne } from "typeorm";
+import { PurchaseOrderItem } from "stock-management/PurchaseOrderItem";
+import { Column, Entity, ManyToOne, OneToMany } from "typeorm";
 
 @Entity("order_items")
 export class OrderItem extends CommonEntity {
@@ -14,7 +15,7 @@ export class OrderItem extends CommonEntity {
   status!: "active" | "deleted" | "hidden";
 
   @Column()
-  name!: string;
+  name!: string; // 상품 명
 
   @Column()
   amount!: number;
@@ -33,11 +34,13 @@ export class OrderItem extends CommonEntity {
   url?: string;
 
   //
+  @ManyToOne(() => AbstractStock, (abstractStock) => abstractStock.orderItems)
+  abstractStock?: AbstractStock;
 
   // 유통사
   @ManyToOne(() => Distributor, (distributor) => distributor.orderItems)
   distributor?: Distributor;
 
-  @ManyToOne(() => Stock, (stock) => stock.orderItems)
-  stock?: Stock;
+  @OneToMany(() => PurchaseOrderItem, (purchaseOrderItem) => purchaseOrderItem.orderItem)
+  purchaseOrderItems?: PurchaseOrderItem[];
 }

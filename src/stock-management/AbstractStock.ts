@@ -1,9 +1,10 @@
 import { CommonEntity } from "common/common.entity";
 import { OrderItem } from "stock-management/OrderItem";
-import { Column, Entity, OneToMany } from "typeorm";
+import { Column, Entity, OneToMany, Unique } from "typeorm";
 
-@Entity("example_stocks")
-export class ExampleStock extends CommonEntity {
+@Entity("abstract_stocks")
+@Unique(["name"])
+export class AbstractStock extends CommonEntity {
   // 활성, 삭제, 숨김
   @Column({
     type: "enum",
@@ -21,6 +22,9 @@ export class ExampleStock extends CommonEntity {
   @Column({ nullable: true })
   description?: string;
 
-  @OneToMany(() => OrderItem, (orderItem) => orderItem.stock)
+  @Column({ type: "date", nullable: true })
+  expirationDate?: Date;
+
+  @OneToMany(() => OrderItem, (orderItem) => orderItem.abstractStock)
   orderItems?: OrderItem;
 }

@@ -1,5 +1,7 @@
 import { CommonEntity } from "common/common.entity";
-import { OrderItem } from "stock-management/OrderItem";
+import { AbstractStock } from "stock-management/AbstractStock";
+import { StockInbound } from "stock-management/StockInbound";
+import { StockOutbound } from "stock-management/StockOutbound";
 import { User } from "stock-management/User";
 import { Column, Entity, ManyToOne, OneToMany } from "typeorm";
 
@@ -14,21 +16,20 @@ export class Stock extends CommonEntity {
   status!: "active" | "deleted" | "hidden";
 
   @Column()
-  name!: string;
-
-  @Column()
   amount!: number;
-
-  @Column()
-  unit!: string;
 
   @Column({ nullable: true })
   description?: string;
 
-  //
   @ManyToOne(() => User, (user) => user.stocks)
   user?: User;
 
-  @OneToMany(() => OrderItem, (orderItem) => orderItem.stock)
-  orderItems?: OrderItem;
+  @ManyToOne(() => AbstractStock, (abstractStock) => abstractStock)
+  abstractStock?: AbstractStock;
+
+  @OneToMany(() => StockInbound, (stockInbound) => stockInbound.stock)
+  stockInbounds?: StockInbound[];
+
+  @OneToMany(() => StockOutbound, (stockOutbound) => stockOutbound.stock)
+  stockOutbounds?: StockOutbound[];
 }
